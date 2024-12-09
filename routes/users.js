@@ -5,7 +5,6 @@ const { autho } = require("../middlewares");
 
 router.get("/login", userController.loginForm);
 router.get("/register", userController.signupForm);
-router.get("/viewprofile", autho.auth, userController.profileView);
 router.get("/viewAllUsers", userController.viewAllUsers);
 router.post("/login", userController.login);
 router.post("/register", userController.register);
