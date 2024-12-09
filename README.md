@@ -79,7 +79,9 @@ The **Book API** allows you to manage books in the system. All requests require 
 - ![GET](https://img.shields.io/badge/GET-green)  
 - **API**: `/api/books`  
 - **Description**: Retrieves all books in the library.  
-- **Authentication**: Required (JWT)  
+
+#### Response
+An HTML file displaying the books available
 
 
 #### 2. **Add a New Book**  
@@ -87,28 +89,103 @@ The **Book API** allows you to manage books in the system. All requests require 
 - **API**: `/api/books`  
 - **Description**: Adds a new book to the library database.  
 - **Authentication**: Required (JWT)  
-- **Access**: Admin
+
+#### Body : 
+```
+{
+  "id": 2,
+  "title": "1984",
+  "author": "George Orwell",
+  "published_year": "1949",
+  "genre": "Dystopian",
+  "available_copies": "3"
+}
+
+```
+
+#### Response
+```
+{
+    "book": {
+        "id": 2,
+        "title": "1984",
+        "author": "George Orwell",
+        "published_year": "1949",
+        "genre": "Dystopian",
+        "available_copies": "3",
+        "_id": "67573d45a0a0c76b0b46b940",
+        "__v": 0
+    }
+}
+```
 
 #### 3. **Get Book by ID**  
 - ![GET](https://img.shields.io/badge/GET-green)  
 - **API**: `/api/books/:id`  
 - **Description**: Retrieves a single book's details by its ID.  
 - **Authentication**: Required (JWT)  
-- **Access**: Admin, User
+
+#### Example API : http://localhost:3000/api/books/2
+
+#### Response: 
+```
+{
+    "_id": "67573d45a0a0c76b0b46b940",
+    "id": 2,
+    "title": "1984",
+    "author": "George Orwell",
+    "published_year": "1949",
+    "genre": "Dystopian",
+    "available_copies": "3",
+    "__v": 0
+}
+```
+
 
 #### 4. **Update Book Information**  
 - ![PUT](https://img.shields.io/badge/PUT-orange)  
 - **API**: `/api/books/:id`  
 - **Description**: Updates an existing book's information by its ID.  
 - **Authentication**: Required (JWT)  
-- **Access**: Admin
+
+#### Body : 
+```
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "published_year": "1925",
+  "genre": "Classic Fiction",
+  "available_copies": "10"
+}
+
+```
+
+#### Response
+```
+{
+    "_id": "67573ab0d2faef05dfb3be6f",
+    "id": 1,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "published_year": "1925",
+    "genre": "Classic Fiction",
+    "available_copies": "10",
+    "__v": 0
+}
+```
 
 #### 5. **Delete a Book**  
 - ![DELETE](https://img.shields.io/badge/DELETE-red)  
 - **API**: `/api/books/:id`  
 - **Description**: Deletes a book by its ID from the system.  
 - **Authentication**: Required (JWT)  
-- **Access**: Admin
+
+#### Response
+```
+{
+    "message": "Book deleted successfully"
+}
+```
 
 ### User API
 
