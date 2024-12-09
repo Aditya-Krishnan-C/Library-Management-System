@@ -1,51 +1,17 @@
-const User = require("../model/usermodel");
-const { dbHelper } = require("../helper");
-module.exports = {
-  findUserEmail: async (email, next) => {
-    try {
-      return await User.findOne({ email });
-    } catch (err) {
-      console.error("Error finding user by email:", err);
-      next(err);
-    }
-  },
-  findUserByName: async (name, next) => {
-    try {
-      return await User.findOne({ name });
-    } catch (err) {
-      console.error("Error finding user by name:", err);
-      next(err);
-    }
-  },
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-  findUserById: async (id, next) => {
-    return await dbHelper.findOne(User, { _id: id }, {}, next);
+const user = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  membership_type: {
+    type: String,
+    enum: ["Regular", "Premium"],
+    required: true,
   },
-  createUser: async (body, next) => {
-    return await dbHelper.create(User, body, next);
-  },
-  updateUser: async (body, name, next) => {
-    try {
-      const filter = { name };
-      return await User.findOneAndUpdate(filter, body, { new: true });
-    } catch (error) {
-      next(error);
-    }
-  },
-  findAllUsers: async (next) => {
-    try {
-      return await User.find({});
-    } catch (err) {
-      console.error("Error retrieving all users:", err);
-      next(err);
-    }
-  },
-  deleteUser: async (userId, next) => {
-    try {
-      await User.findByIdAndDelete(userId);
-    } catch (err) {
-      console.error("Error deleting user:", err);
-      next(err);
-    }
-  },
-};
+  registered_date: { type: Date, default: Date.now },
+  token: { type: String, required: false },
+});
+
+module.exports = mongoose.model("User", user);
