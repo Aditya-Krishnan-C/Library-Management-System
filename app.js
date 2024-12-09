@@ -9,16 +9,6 @@ const bookRoute = require("./routes/book/bookindex");
 var bodyParser = require("body-parser");
 const connectDB = require("./db");
 connectDB();
-const mongoose = require("mongoose");
-
-mongoose
-  .connect("mongodb://127.0.0.1:27017/library")
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB:", err);
-  });
 
 var indexRouter = require("./routes/index");
 
