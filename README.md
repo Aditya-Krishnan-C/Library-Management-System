@@ -14,6 +14,7 @@ The Library Management System (LMS) is a web application designed to help librar
 ### User functionalities
 - Login, Register, Update and delete a user
 - View all the user present in the database
+- JWT Authentication for registering and login
 
 ### Hosting done at Render 
 https://library-management-system-nysd.onrender.com
