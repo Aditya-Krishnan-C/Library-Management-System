@@ -15,10 +15,15 @@ The Library Management System (LMS) is a web application designed to help librar
 - Login, Register, Update and delete a user
 - View all the user present in the database
 
+### Hosting done at Render 
+https://library-management-system-nysd.onrender.com
+
 ## Requirements
 
 - **Node.js** (v14 or higher)
 - **MongoDB** (or a MongoDB URI for remote databases like MongoDB Atlas)
+
+
 
 ## Setup Instructions
 
