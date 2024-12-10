@@ -50,7 +50,7 @@ npm install
 Create a .env file in the root directory and set the following environment variables:
 
 ```bash
-PORT=5000
+PORT=3000
 MONGO_URI=mongodb://localhost:27017/library  # Or your MongoDB Atlas URI
 JWT_SECRET=your_jwt_secret_key
 ```
